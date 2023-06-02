@@ -1,10 +1,7 @@
 
 package dto;
 
-import javax.annotation.Generated;
-
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.google.gson.annotations.SerializedName;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -15,32 +12,32 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UserResponseDTO {
 
-    private Long mCode;
-    private String mMessage;
-    private String mType;
+  private Long code;
+  private String message;
+  private String type;
 
-    public Long getCode() {
-        return mCode;
-    }
+  public Long getCode() {
+    return code;
+  }
 
-    public void setCode(Long code) {
-        mCode = code;
-    }
+  public void setCode(Long code) {
+    this.code = code;
+  }
 
-    public String getMessage() {
-        return mMessage;
-    }
+  public String getMessage() {
+    return message;
+  }
 
-    public void setMessage(String message) {
-        mMessage = message;
-    }
+  public void setMessage(String message) {
+    this.message = message;
+  }
 
-    public String getType() {
-        return mType;
-    }
+  public String getType() {
+    return type;
+  }
 
-    public void setType(String type) {
-        mType = type;
-    }
+  public void setType(String type) {
+    this.type = type;
+  }
 
 }

@@ -1,8 +1,6 @@
 
 package dto;
 
-import javax.annotation.Generated;
-import com.google.gson.annotations.Expose;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -14,8 +12,8 @@ import lombok.NoArgsConstructor;
 @Getter
 public class Category {
 
-    private int id;
+  private int id;
 
-    private String name;
+  private String name;
 
 }

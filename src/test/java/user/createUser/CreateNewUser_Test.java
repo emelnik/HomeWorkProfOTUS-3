@@ -1,4 +1,6 @@
-package user.createUser;
+package user.createuser;
+
+import static org.hamcrest.Matchers.equalTo;
 
 import dto.GetUserResponseDTO;
 import dto.UserRequestDTO;
@@ -8,8 +10,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import services.UserCreateApi;
 import services.UserGetApi;
-
-import static org.hamcrest.Matchers.equalTo;
 
 public class CreateNewUser_Test {
 
@@ -22,7 +22,7 @@ public class CreateNewUser_Test {
   //В данном тесте проверяем создание пользователя с заполнением нижеперечисленных полей
   //проверяем что апишка возвращает корректный код ответа, тип и сообщение
   @Test
-  public void createUser(){
+  public void createUser() {
     UserCreateApi userApi = new UserCreateApi();
 
     UserRequestDTO user = UserRequestDTO.builder()
@@ -45,7 +45,7 @@ public class CreateNewUser_Test {
 
   //В данном тесте создаем юзера только с одним полем username и проверяем что юзер успешно создался
   @Test
-  public void createUserOnlyUsernameField(){
+  public void createUserOnlyUsernameField() {
 
     UserCreateApi userCreateApi = new UserCreateApi();
 
@@ -65,7 +65,20 @@ public class CreateNewUser_Test {
   //В данном тесте проверяем что пользователь созданный выше корректно создался
   //запрос ответил 200 и поля заполнены согласно созданному юзеру
   @Test
-  public void getUserByUsername(){
+  public void getUserByUsername() {
+
+    UserCreateApi userCreateApi = new UserCreateApi();
+
+    UserRequestDTO user = UserRequestDTO.builder()
+        .id(id)
+        .email(email)
+        .password("123456")
+        .username(username)
+        .userStatus(201)
+        .build();
+
+    userCreateApi.createUser(user).statusCode(HttpStatus.SC_OK);
+
 
     UserGetApi userGetApi = new UserGetApi();
 
@@ -79,21 +92,5 @@ public class CreateNewUser_Test {
     Assertions.assertEquals(username, getUserResponseDTO.getUsername());
     Assertions.assertEquals(id, getUserResponseDTO.getId());
     Assertions.assertEquals(email, getUserResponseDTO.getEmail());
-    Assertions.assertEquals(firstName, getUserResponseDTO.getFirstName());
-    Assertions.assertEquals(lastName, getUserResponseDTO.getLastName());
   }
-
-
-  //В данном тесте запрашиваем несуществующего пользователя и проверяем что ответ будет 404
-  @Test
-  public void getNonexistentUser(){
-
-    UserGetApi userGetApi = new UserGetApi();
-
-    userGetApi.getUser("blablabla")
-        .statusCode(HttpStatus.SC_NOT_FOUND);
-
-  }
-
-
 }

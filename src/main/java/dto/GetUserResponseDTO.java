@@ -14,20 +14,20 @@ import lombok.NoArgsConstructor;
 @Getter
 public class GetUserResponseDTO {
 
-    private String email;
+  private String email;
 
-    private String firstName;
+  private String firstName;
 
-    private int id;
+  private int id;
 
-    private String lastName;
+  private String lastName;
 
-    private String password;
+  private String password;
 
-    private String phone;
+  private String phone;
 
-    private int userStatus;
+  private int userStatus;
 
-    private String username;
+  private String username;
 
 }

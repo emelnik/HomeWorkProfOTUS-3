@@ -2,21 +2,19 @@ package services;
 
 import static io.restassured.RestAssured.given;
 
-import dto.UserRequestDTO;
-
 import io.restassured.response.ValidatableResponse;
 
-public class UserCreateApi {
+public class DeletePetInStore {
 
-  private static final String PATH_CREATE_USER = "/user";
+  private static final String PATH_DELETE_PET = "/pet/{petId}";
 
-  public ValidatableResponse createUser(UserRequestDTO userCreateDTO) {
+  public ValidatableResponse deletePet(int petId) {
 
     return given(new BaseRequest().getReqSpec())
         .log().all()
-        .body(userCreateDTO)
+        .pathParam("petId", petId)
         .when()
-        .post(PATH_CREATE_USER)
+        .delete(PATH_DELETE_PET)
         .then()
         .log().all();
 

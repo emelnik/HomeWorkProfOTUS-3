@@ -11,8 +11,6 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <webdriver.manager.version>4.2.0</webdriver.manager.version>
-    <selenium.java.version>3.141.59</selenium.java.version>
     <junit.version>5.9.2</junit.version>
     <java.faker.version>1.0.2</java.faker.version>
     <surefire.plugin.version>3.0.0</surefire.plugin.version>
@@ -21,21 +19,11 @@
     <rest.assured.version>5.3.0</rest.assured.version>
 
     <browser>chrome</browser>
-    <webdriver.base.url>https://www.otus.ru</webdriver.base.url>
+    <base.url>https://petstore.swagger.io/v2</base.url>
 
   </properties>
 
   <dependencies>
-    <dependency>
-      <groupId>io.github.bonigarcia</groupId>
-      <artifactId>webdrivermanager</artifactId>
-      <version>${webdriver.manager.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.seleniumhq.selenium</groupId>
-      <artifactId>selenium-java</artifactId>
-      <version>${selenium.java.version}</version>
-    </dependency>
     <dependency>
       <groupId>org.junit</groupId>
       <artifactId>junit-bom</artifactId>
@@ -69,7 +57,6 @@
       <groupId>io.rest-assured</groupId>
       <artifactId>rest-assured</artifactId>
       <version>${rest.assured.version}</version>
-      <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
@@ -89,7 +76,7 @@
         <configuration>
           <systemPropertyVariables>
             <browser>${browser}</browser>
-            <webdriver.base.url>${webdriver.base.url}</webdriver.base.url>
+            <base.url>${base.url}</base.url>
           </systemPropertyVariables>
         </configuration>
       </plugin>

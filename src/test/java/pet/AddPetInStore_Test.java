@@ -8,6 +8,7 @@ import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import services.AddPetInStoreApi;
+import services.DeletePetInStore;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,13 +17,14 @@ public class AddPetInStore_Test {
 
   //В этом тесте создаем зверюшку и проверяем что в респонсе приходит имя и название категории которую мы создавали
   @Test
-  public void addPetInStore(){
+  public void addPetInStore() {
 
     List<String> petPhotoUrl = new ArrayList<>();
     List<Tag> petTagList = new ArrayList<>();
 
     String petName = "Barsik002";
     String categoryName = "Cat";
+    int idPet = 100500;
 
     petPhotoUrl.add("https://www.mail.ru");
     petTagList.add(new Tag(10, "kity2"));
@@ -31,15 +33,13 @@ public class AddPetInStore_Test {
 
     PetRequestDTO petRequestDTO = PetRequestDTO
         .builder()
-        .id(11002)
+        .id(idPet)
         .category(new Category(123, categoryName))
         .name(petName)
         .photoUrls(petPhotoUrl)
         .tags(petTagList)
         .status("available")
         .build();
-
-    addPetInStoreApi.addPetInStore(petRequestDTO);
 
     PetResponseDTO petResponseDTO = addPetInStoreApi
         .addPetInStore(petRequestDTO)
@@ -49,6 +49,8 @@ public class AddPetInStore_Test {
 
     Assertions.assertEquals(petName, petResponseDTO.getName());
     Assertions.assertEquals(categoryName, petResponseDTO.getCategory().getName());
+
+    new DeletePetInStore().deletePet(idPet).statusCode(HttpStatus.SC_OK);
 
   }
 

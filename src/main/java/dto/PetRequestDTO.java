@@ -12,16 +12,16 @@ import lombok.*;
 @Setter
 public class PetRequestDTO {
 
-    private Category category;
+  private Category category;
 
-    private int id;
+  private int id;
 
-    private String name;
+  private String name;
 
-    private List<String> photoUrls;
+  private List<String> photoUrls;
 
-    private String status;
+  private String status;
 
-    private List<Tag> tags;
+  private List<Tag> tags;
 
 }
